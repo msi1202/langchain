@@ -638,8 +638,8 @@ class ChildTool(BaseTool):
         return await run_in_executor(None, self._run, *args, **kwargs)
 
     def _to_args_and_kwargs(
-        self, tool_input: Union[str, dict], tool_call_id: Optional[str]
-    ) -> tuple[tuple, dict]:
+         self, tool_input: Union[str, dict], tool_call_id: Optional[str]
+     ) -> tuple[tuple, dict]:
         if (
             self.args_schema is not None
             and isinstance(self.args_schema, type)
@@ -660,9 +660,6 @@ class ChildTool(BaseTool):
             # This is used by the tool to inject run time information like
             # the callback manager.
             return (), tool_input.copy()
-        # This code path is not expected to be reachable.
-        msg = f"Invalid tool input type: {type(tool_input)}"
-        raise TypeError(msg)
 
     def run(
         self,
